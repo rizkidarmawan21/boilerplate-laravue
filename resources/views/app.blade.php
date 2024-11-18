@@ -7,6 +7,9 @@
     <title inertia>{{ config('app.name', '') }}</title>
     <!-- Scripts -->
     @routes
+    <script>
+        Ziggy.url = '{{ env('APP_URL') }}'
+    </script>
     
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter">
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
