@@ -25,7 +25,14 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         if (env('APP_ENV') !== 'local') {
-            URL::forceSchema('https');
+            // Periksa apakah APP_URL sudah memiliki 'https://', jika belum, tambahkan
+            $appUrl = env('APP_URL');
+            if (strpos($appUrl, 'http://') === 0) {
+                $appUrl = 'https://' . substr($appUrl, 7);
+            }
+
+            // Memaksa root URL untuk menggunakan HTTPS
+            URL::forceRootUrl($appUrl);
         }
     }
 }
