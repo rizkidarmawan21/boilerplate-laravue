@@ -17,6 +17,7 @@ export default defineConfig({
             },
         }),
     ],
+    base: process.env.APP_URL || '/',
     resolve: {
         alias: {
             "@": "/resources/js",
